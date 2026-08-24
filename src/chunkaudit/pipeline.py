@@ -8,6 +8,7 @@ and stride is not a number anybody can act on.
 
 from __future__ import annotations
 
+import math
 from dataclasses import asdict, dataclass
 
 from .audit import AuditResult, audit
@@ -49,7 +50,20 @@ class AuditRow:
     verdict: str
 
     def as_dict(self) -> dict[str, object]:
-        return asdict(self)
+        """The row as plain JSON types, with a non finite float becoming null.
+
+        Two rates here are undefined rather than zero when nothing failed: the
+        share of failures a retriever could fix, and the median share of the
+        answer a failure retrieved. Both come out as a nan, which json.dumps
+        writes as the bare token NaN. Python reads that back and nothing else
+        does, and a nan also compares unequal to itself, which made a
+        determinism test fail on two runs that were in fact identical. A missing
+        number is null.
+        """
+        return {
+            key: None if isinstance(value, float) and not math.isfinite(value) else value
+            for key, value in asdict(self).items()
+        }
 
 
 def row_from(result: AuditResult) -> AuditRow:

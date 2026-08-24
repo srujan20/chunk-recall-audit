@@ -1,5 +1,41 @@
 {
   "anchors": {
+    "bench_ceiling_large_ms": [
+      "{} ms at the largest"
+    ],
+    "bench_ceiling_linearity": [
+      "a linearity ratio of {}"
+    ],
+    "bench_ceiling_small_ms": [
+      "ceiling takes {} ms"
+    ],
+    "bench_largest_chunks": [
+      "{} chunks in the index"
+    ],
+    "bench_largest_documents": [
+      "out to {} documents"
+    ],
+    "bench_python": [
+      "Python {}"
+    ],
+    "bench_ratio_large": [
+      "widens to {} times"
+    ],
+    "bench_ratio_small": [
+      "{} times the ceiling at"
+    ],
+    "bench_repeats": [
+      "{} timed repeats"
+    ],
+    "bench_retrieval_large_ms": [
+      "retrieval takes {} ms"
+    ],
+    "bench_retrieval_linearity": [
+      "retrieval's is {}"
+    ],
+    "bench_smallest_documents": [
+      "from {} documents"
+    ],
     "best_real_ceiling": [
       "reaches {} on"
     ],
@@ -8,6 +44,96 @@
     ],
     "ceiling_tightness": [
       "worst absolute difference of {}"
+    ],
+    "cell_bench_120_ceiling": [
+      "| {} |"
+    ],
+    "cell_bench_120_ceiling_p95": [
+      "| {} |"
+    ],
+    "cell_bench_120_chunks": [
+      "| {} |"
+    ],
+    "cell_bench_120_questions": [
+      "| {} |"
+    ],
+    "cell_bench_120_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_120_retrieval": [
+      "| {} |"
+    ],
+    "cell_bench_1920_ceiling": [
+      "| {} |"
+    ],
+    "cell_bench_1920_ceiling_p95": [
+      "| {} |"
+    ],
+    "cell_bench_1920_chunks": [
+      "| {} |"
+    ],
+    "cell_bench_1920_questions": [
+      "| {} |"
+    ],
+    "cell_bench_1920_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_1920_retrieval": [
+      "| {} |"
+    ],
+    "cell_bench_240_ceiling": [
+      "| {} |"
+    ],
+    "cell_bench_240_ceiling_p95": [
+      "| {} |"
+    ],
+    "cell_bench_240_chunks": [
+      "| {} |"
+    ],
+    "cell_bench_240_questions": [
+      "| {} |"
+    ],
+    "cell_bench_240_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_240_retrieval": [
+      "| {} |"
+    ],
+    "cell_bench_480_ceiling": [
+      "| {} |"
+    ],
+    "cell_bench_480_ceiling_p95": [
+      "| {} |"
+    ],
+    "cell_bench_480_chunks": [
+      "| {} |"
+    ],
+    "cell_bench_480_questions": [
+      "| {} |"
+    ],
+    "cell_bench_480_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_480_retrieval": [
+      "| {} |"
+    ],
+    "cell_bench_960_ceiling": [
+      "| {} |"
+    ],
+    "cell_bench_960_ceiling_p95": [
+      "| {} |"
+    ],
+    "cell_bench_960_chunks": [
+      "| {} |"
+    ],
+    "cell_bench_960_questions": [
+      "| {} |"
+    ],
+    "cell_bench_960_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_960_retrieval": [
+      "| {} |"
     ],
     "cell_document_ceiling": [
       "| {} |"
@@ -274,9 +400,51 @@
     "docs/adr/ADR-005-every-rate-carries-its-denominator.md"
   ],
   "metrics": {
+    "bench_ceiling_large_ms": 37.3,
+    "bench_ceiling_linearity": 1.05,
+    "bench_ceiling_small_ms": 2.2,
+    "bench_largest_chunks": 10558,
+    "bench_largest_documents": 1920,
+    "bench_python": "3.11.15",
+    "bench_ratio_large": 320.7,
+    "bench_ratio_small": 22.5,
+    "bench_repeats": 7,
+    "bench_retrieval_large_ms": 11974.3,
+    "bench_retrieval_linearity": 14.949,
+    "bench_smallest_documents": 120,
     "best_real_ceiling": 0.8278,
     "best_real_characters": 3731,
     "ceiling_tightness": 0.0,
+    "cell_bench_120_ceiling": 2.2,
+    "cell_bench_120_ceiling_p95": 2.7,
+    "cell_bench_120_chunks": 667,
+    "cell_bench_120_questions": 360,
+    "cell_bench_120_ratio": 22.5,
+    "cell_bench_120_retrieval": 50.1,
+    "cell_bench_1920_ceiling": 37.3,
+    "cell_bench_1920_ceiling_p95": 52.2,
+    "cell_bench_1920_chunks": 10558,
+    "cell_bench_1920_questions": 5760,
+    "cell_bench_1920_ratio": 320.7,
+    "cell_bench_1920_retrieval": 11974.3,
+    "cell_bench_240_ceiling": 4.5,
+    "cell_bench_240_ceiling_p95": 11.6,
+    "cell_bench_240_chunks": 1321,
+    "cell_bench_240_questions": 720,
+    "cell_bench_240_ratio": 35.2,
+    "cell_bench_240_retrieval": 158.6,
+    "cell_bench_480_ceiling": 8.7,
+    "cell_bench_480_ceiling_p95": 18.3,
+    "cell_bench_480_chunks": 2635,
+    "cell_bench_480_questions": 1440,
+    "cell_bench_480_ratio": 64.8,
+    "cell_bench_480_retrieval": 565.2,
+    "cell_bench_960_ceiling": 18.1,
+    "cell_bench_960_ceiling_p95": 28.5,
+    "cell_bench_960_chunks": 5271,
+    "cell_bench_960_questions": 2880,
+    "cell_bench_960_ratio": 123.0,
+    "cell_bench_960_retrieval": 2226.8,
     "cell_document_ceiling": 1.0,
     "cell_document_chunks": 120,
     "cell_document_gap": 0.0,
@@ -355,7 +523,7 @@
     "survival_at_150_no_overlap": 0.652,
     "survival_at_400_wide": 0.557,
     "sweep_seconds": 10,
-    "tests_total": 232,
+    "tests_total": 233,
     "widest_gap": 0.7472,
     "widest_gap_chunk_recall": 1.0,
     "widest_gap_chunking": "fixed-200-150",

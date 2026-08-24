@@ -1,0 +1,101 @@
+name: "chunk recall audit"
+description: "Compute the containment ceiling of a chunking before any retrieval, attribute every failure to the chunker or the retriever, and fail the build when the chunker destroys material answers"
+author: "Srujan Sadineni"
+branding:
+  icon: "scissors"
+  color: "red"
+
+# Three exit codes reach the caller, and which one becomes a failed step is the
+# whole reason this file exists rather than a bare `run:` line. Exit 1 is a
+# chunking that destroys material answers and fails. Exit 2 means the causes
+# could not be told apart within tolerance, which is neither a pass nor a
+# failure, so `ambiguous-fails` decides it and defaults to false: a team adopting
+# this should see the verdict before it starts blocking on it. Exit 3 and 4 are
+# always failures, because they mean the audit did not run.
+
+inputs:
+  policy:
+    description: "Path to the policy file with the strategy, size, stride, k and thresholds"
+    required: false
+    default: "configs/policy.yaml"
+  strategy:
+    description: "Chunking strategy to audit"
+    required: false
+    default: "fixed"
+  size:
+    description: "Chunk size, in characters for the fixed and recursive strategies"
+    required: false
+    default: "400"
+  stride:
+    description: "Chunk stride. The guaranteed answer length is size minus stride plus one"
+    required: false
+    default: "400"
+  html:
+    description: "Optional path for the self contained HTML report"
+    required: false
+    default: ""
+  warn-only:
+    description: "Report the verdict and never fail the step"
+    required: false
+    default: "false"
+  ambiguous-fails:
+    description: "Whether exit 2, the causes cannot be told apart, fails the step"
+    required: false
+    default: "false"
+
+outputs:
+  verdict:
+    description: "The audit's verdict line"
+    value: ${{ steps.audit.outputs.verdict }}
+  exit-code:
+    description: "The audit's own exit code, whatever this action did about it"
+    value: ${{ steps.audit.outputs.exit-code }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install the audit
+      shell: bash
+      run: python -m pip install --quiet "${{ github.action_path }}"
+
+    - name: Run the audit
+      id: audit
+      shell: bash
+      run: |
+        set +e
+        html_flag=""
+        if [ -n "${{ inputs.html }}" ]; then
+          html_flag="--html ${{ inputs.html }}"
+        fi
+        output=$(python -m chunkaudit audit \
+          --policy "${{ inputs.policy }}" \
+          --strategy "${{ inputs.strategy }}" \
+          --size "${{ inputs.size }}" \
+          --stride "${{ inputs.stride }}" \
+          $html_flag 2>&1)
+        code=$?
+        set -e
+        echo "$output"
+        verdict=$(printf '%s\n' "$output" | sed -n 's/^verdict: //p' | head -1)
+        echo "verdict=${verdict}" >> "$GITHUB_OUTPUT"
+        echo "exit-code=${code}" >> "$GITHUB_OUTPUT"
+
+        {
+          echo "### Chunk recall audit"
+          echo
+          echo "Verdict: \`${verdict}\`, exit code ${code}."
+          echo
+          echo '```'
+          printf '%s\n' "$output"
+          echo '```'
+        } >> "$GITHUB_STEP_SUMMARY"
+
+        if [ "${{ inputs.warn-only }}" = "true" ]; then
+          echo "warn-only is set, so this step passes whatever the audit said"
+          exit 0
+        fi
+        if [ "$code" = "2" ] && [ "${{ inputs.ambiguous-fails }}" != "true" ]; then
+          echo "::warning::the failure causes could not be told apart, which is not a pass"
+          exit 0
+        fi
+        exit $code

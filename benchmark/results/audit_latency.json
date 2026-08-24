@@ -1,0 +1,69 @@
+{
+  "hardware": {
+    "python": "3.11.15",
+    "machine": "x86_64",
+    "platform": "Linux"
+  },
+  "chunking": {
+    "strategy": "fixed",
+    "size": 400,
+    "stride": 300
+  },
+  "retriever": "bm25",
+  "k": 5,
+  "repeats": 7,
+  "rows": [
+    {
+      "documents": 120,
+      "questions": 360,
+      "chunks": 667,
+      "ceiling_p50_ms": 2.222,
+      "ceiling_p95_ms": 2.7,
+      "retrieval_p50_ms": 50.064,
+      "retrieval_p95_ms": 53.913,
+      "retrieval_over_ceiling": 22.5
+    },
+    {
+      "documents": 240,
+      "questions": 720,
+      "chunks": 1321,
+      "ceiling_p50_ms": 4.5,
+      "ceiling_p95_ms": 11.58,
+      "retrieval_p50_ms": 158.588,
+      "retrieval_p95_ms": 161.448,
+      "retrieval_over_ceiling": 35.2
+    },
+    {
+      "documents": 480,
+      "questions": 1440,
+      "chunks": 2635,
+      "ceiling_p50_ms": 8.724,
+      "ceiling_p95_ms": 18.321,
+      "retrieval_p50_ms": 565.235,
+      "retrieval_p95_ms": 583.649,
+      "retrieval_over_ceiling": 64.8
+    },
+    {
+      "documents": 960,
+      "questions": 2880,
+      "chunks": 5271,
+      "ceiling_p50_ms": 18.107,
+      "ceiling_p95_ms": 28.53,
+      "retrieval_p50_ms": 2226.763,
+      "retrieval_p95_ms": 2313.453,
+      "retrieval_over_ceiling": 123.0
+    },
+    {
+      "documents": 1920,
+      "questions": 5760,
+      "chunks": 10558,
+      "ceiling_p50_ms": 37.336,
+      "ceiling_p95_ms": 52.2,
+      "retrieval_p50_ms": 11974.338,
+      "retrieval_p95_ms": 12311.78,
+      "retrieval_over_ceiling": 320.7
+    }
+  ],
+  "ceiling_linearity": 1.05,
+  "retrieval_linearity": 14.949
+}

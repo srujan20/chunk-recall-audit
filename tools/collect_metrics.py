@@ -83,6 +83,18 @@ ANCHORS: dict[str, list[str]] = {
     "ceiling_tightness": ["worst absolute difference of {}"],
     "resolution_floor_pct": ["below {} percent"],
     "sweep_seconds": ["under {} seconds"],
+    "bench_repeats": ["{} timed repeats"],
+    "bench_python": ["Python {}"],
+    "bench_smallest_documents": ["from {} documents"],
+    "bench_largest_documents": ["out to {} documents"],
+    "bench_largest_chunks": ["{} chunks in the index"],
+    "bench_ceiling_small_ms": ["ceiling takes {} ms"],
+    "bench_ceiling_large_ms": ["{} ms at the largest"],
+    "bench_retrieval_large_ms": ["retrieval takes {} ms"],
+    "bench_ratio_small": ["{} times the ceiling at"],
+    "bench_ratio_large": ["widens to {} times"],
+    "bench_ceiling_linearity": ["a linearity ratio of {}"],
+    "bench_retrieval_linearity": ["retrieval's is {}"],
 }
 
 CELL_ANCHOR = ["| {} |"]
@@ -149,6 +161,34 @@ def load(name: str) -> dict:
 
 def one_decimal(value: float) -> float:
     return round(value, 1)
+
+
+def ms(value: float) -> float:
+    """A duration rounded for prose: one decimal above a millisecond, three below.
+
+    The benchmark JSON keeps three decimals throughout. Rounding happens here, at
+    the point where a number becomes a sentence, because a duration quoted to the
+    microsecond on a two vCPU container is a false precision.
+    """
+    return round(value, 1) if value >= 1.0 else round(value, 3)
+
+
+def load_bench() -> dict:
+    """Read the committed latency measurement rather than re-running it.
+
+    This is the one figure family in the registry that is not re-measured on every
+    push. A duration measured on a GitHub runner is a different measurement from
+    one measured on the machine the README describes, so re-timing in CI would fail
+    the check for the honest reason that the hardware changed. `make bench` rewrites
+    the file, and its diff is reviewed like any other file.
+    """
+    path = REPO / "benchmark/results/audit_latency.json"
+    if not path.is_file():
+        raise SystemExit(
+            f"{path.relative_to(REPO)} is missing, so the latency table cannot be "
+            "checked. Run: make bench"
+        )
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def build_metrics(*, skip_tests: bool, skip_experiments: bool) -> dict[str, object]:
@@ -251,6 +291,29 @@ def build_metrics(*, skip_tests: bool, skip_experiments: bool) -> dict[str, obje
         metrics[f"cell_{key}_chunks"] = entry["chunk_count"]
     for length, value in curves["400-400"].items():
         metrics[f"cell_survival_400_400_{length}"] = round(value, 3)
+
+    bench = load_bench()
+    small, large = bench["rows"][0], bench["rows"][-1]
+    metrics["bench_repeats"] = bench["repeats"]
+    metrics["bench_python"] = bench["hardware"]["python"]
+    metrics["bench_smallest_documents"] = small["documents"]
+    metrics["bench_largest_documents"] = large["documents"]
+    metrics["bench_largest_chunks"] = large["chunks"]
+    metrics["bench_ceiling_small_ms"] = ms(small["ceiling_p50_ms"])
+    metrics["bench_ceiling_large_ms"] = ms(large["ceiling_p50_ms"])
+    metrics["bench_retrieval_large_ms"] = ms(large["retrieval_p50_ms"])
+    metrics["bench_ratio_small"] = small["retrieval_over_ceiling"]
+    metrics["bench_ratio_large"] = large["retrieval_over_ceiling"]
+    metrics["bench_ceiling_linearity"] = bench["ceiling_linearity"]
+    metrics["bench_retrieval_linearity"] = bench["retrieval_linearity"]
+    for row in bench["rows"]:
+        key = row["documents"]
+        metrics[f"cell_bench_{key}_chunks"] = row["chunks"]
+        metrics[f"cell_bench_{key}_questions"] = row["questions"]
+        metrics[f"cell_bench_{key}_ceiling"] = ms(row["ceiling_p50_ms"])
+        metrics[f"cell_bench_{key}_ceiling_p95"] = ms(row["ceiling_p95_ms"])
+        metrics[f"cell_bench_{key}_retrieval"] = ms(row["retrieval_p50_ms"])
+        metrics[f"cell_bench_{key}_ratio"] = row["retrieval_over_ceiling"]
 
     for name in metrics:
         if name.startswith("cell_"):

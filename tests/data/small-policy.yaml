@@ -1,0 +1,15 @@
+retrieval:
+  top_k: 5
+  sweep_k: [1, 5]
+audit:
+  ceiling_floor: 0.95
+  material_gap: 0.02
+  unattributable_tolerance: 0.01
+  assumed_prevalence: 0.25
+corpus:
+  documents: 10
+  questions_per_document: 3
+  span_chars: [40, 150, 400]
+encoder:
+  dimensions: 1024
+  ngram: 4

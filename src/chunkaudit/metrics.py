@@ -64,6 +64,7 @@ class QuestionOutcome:
     containing_chunks_in_corpus: int
     retrieved_overlap_share: float
     rank_of_first_containing: int | None
+    retrieved_characters: int
 
     @property
     def overstated(self) -> bool:
@@ -158,6 +159,7 @@ def outcome_for(
         containing_chunks_in_corpus=containing_in_corpus,
         retrieved_overlap_share=min(1.0, covered / question.answer_length),
         rank_of_first_containing=first_containing,
+        retrieved_characters=sum(chunks[index].span.length for index in ranking.top(k)),
     )
 
 
@@ -251,6 +253,19 @@ class MetricSet:
         )
 
     @property
+    def median_retrieved_characters(self) -> float:
+        """Median characters handed to whatever consumes the retrieved chunks.
+
+        The cost side of the trade, and the reason a whole document chunk is not
+        the obvious answer despite having a perfect ceiling. It ships the entire
+        document for every question, which is a real price even though this
+        repository does not measure what that price buys or loses downstream.
+        """
+        if not self.outcomes:
+            return float("nan")
+        return float(np.median([item.retrieved_characters for item in self.outcomes]))
+
+    @property
     def median_retrieved_share(self) -> float:
         """Median share of the answer the retrieved chunks held, over failures.
 
@@ -275,6 +290,7 @@ class MetricSet:
             "causes": self.causes,
             "fixable_by_retriever": self.fixable_by_retriever.as_dict(),
             "median_retrieved_share": self.median_retrieved_share,
+            "median_retrieved_characters": self.median_retrieved_characters,
         }
 
 

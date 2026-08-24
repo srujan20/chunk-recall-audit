@@ -47,6 +47,7 @@ class AuditRow:
     headroom: float
     attainable_share: float
     median_retrieved_share: float
+    median_retrieved_characters: float
     verdict: str
 
     def as_dict(self) -> dict[str, object]:
@@ -93,6 +94,7 @@ def row_from(result: AuditResult) -> AuditRow:
         headroom=result.headroom,
         attainable_share=result.attainable_share,
         median_retrieved_share=metrics.median_retrieved_share,
+        median_retrieved_characters=metrics.median_retrieved_characters,
         verdict=result.verdict.value,
     )
 

@@ -1,0 +1,229 @@
+{
+  "ceiling_tightness": [
+    {
+      "ceiling": 0.2916666666666667,
+      "chunking": "fixed-200-200",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.2916666666666667
+    },
+    {
+      "ceiling": 0.25277777777777777,
+      "chunking": "fixed-200-150",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.25277777777777777
+    },
+    {
+      "ceiling": 0.475,
+      "chunking": "fixed-400-400",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.475
+    },
+    {
+      "ceiling": 0.5916666666666667,
+      "chunking": "fixed-400-300",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.5916666666666667
+    },
+    {
+      "ceiling": 0.6833333333333333,
+      "chunking": "fixed-400-200",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.6833333333333333
+    },
+    {
+      "ceiling": 0.7388888888888889,
+      "chunking": "fixed-800-800",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.7388888888888889
+    },
+    {
+      "ceiling": 0.7666666666666667,
+      "chunking": "fixed-800-600",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.7666666666666667
+    },
+    {
+      "ceiling": 0.6666666666666666,
+      "chunking": "sentence-1-1",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.6666666666666666
+    },
+    {
+      "ceiling": 0.6666666666666666,
+      "chunking": "sentence-2-1",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.6666666666666666
+    },
+    {
+      "ceiling": 0.6777777777777778,
+      "chunking": "sentence-3-2",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.6777777777777778
+    },
+    {
+      "ceiling": 0.7472222222222222,
+      "chunking": "recursive-400-300",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.7472222222222222
+    },
+    {
+      "ceiling": 0.8277777777777777,
+      "chunking": "recursive-800-600",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 0.8277777777777777
+    },
+    {
+      "ceiling": 1.0,
+      "chunking": "document",
+      "difference": 0.0,
+      "oracle_span_complete_recall": 1.0
+    }
+  ],
+  "chunker_over_retriever": 4.014084507042254,
+  "chunker_ranges": {
+    "bm25": 0.7472222222222222,
+    "hashed": 0.7916666666666666
+  },
+  "chunkings_with_nothing_fixable": {
+    "denominator": 13,
+    "is_measured_zero": false,
+    "numerator": 10,
+    "resolution_floor": 0.07692307692307693,
+    "value": 0.7692307692307693
+  },
+  "experiment": "exp05-which-lever-matters",
+  "floor_gap": {
+    "document": 0.9722222222222222,
+    "fixed-200-150": 0.25277777777777777,
+    "fixed-200-200": 0.2916666666666667,
+    "fixed-400-200": 0.6805555555555556,
+    "fixed-400-300": 0.5861111111111111,
+    "fixed-400-400": 0.46944444444444444,
+    "fixed-800-600": 0.7666666666666667,
+    "fixed-800-800": 0.7222222222222222,
+    "recursive-400-300": 0.7416666666666667,
+    "recursive-800-600": 0.811111111111111,
+    "sentence-1-1": 0.6638888888888889,
+    "sentence-2-1": 0.6638888888888889,
+    "sentence-3-2": 0.663888888888889
+  },
+  "floors": {
+    "questions": 360,
+    "resolution_floor": 0.002777777777777778,
+    "samples_needed": {
+      "0.001": 1000,
+      "0.01": 100,
+      "0.1": 10
+    }
+  },
+  "honest_retrievers": [
+    "bm25",
+    "hashed",
+    "random"
+  ],
+  "note": "the oracle is excluded from the retriever range because it sees the answer. It is reported separately as the tightness check on the ceiling",
+  "question": "does the chunker or the retriever move the number more",
+  "retriever_ranges": {
+    "document": 0.0,
+    "fixed-200-150": 0.044444444444444425,
+    "fixed-200-200": 0.019444444444444486,
+    "fixed-400-200": 0.036111111111111094,
+    "fixed-400-300": 0.0444444444444444,
+    "fixed-400-400": 0.008333333333333304,
+    "fixed-800-600": 0.002777777777777879,
+    "fixed-800-800": 0.0,
+    "recursive-400-300": 0.11944444444444446,
+    "recursive-800-600": 0.002777777777777768,
+    "sentence-1-1": 0.1972222222222222,
+    "sentence-2-1": 0.002777777777777768,
+    "sentence-3-2": 0.008333333333333415
+  },
+  "serious_retrievers": [
+    "bm25",
+    "hashed"
+  ],
+  "span_complete_recall": {
+    "document": {
+      "bm25": 1.0,
+      "hashed": 1.0,
+      "oracle": 1.0,
+      "random": 0.027777777777777776
+    },
+    "fixed-200-150": {
+      "bm25": 0.25277777777777777,
+      "hashed": 0.20833333333333334,
+      "oracle": 0.25277777777777777,
+      "random": 0.0
+    },
+    "fixed-200-200": {
+      "bm25": 0.2916666666666667,
+      "hashed": 0.2722222222222222,
+      "oracle": 0.2916666666666667,
+      "random": 0.0
+    },
+    "fixed-400-200": {
+      "bm25": 0.6833333333333333,
+      "hashed": 0.6472222222222223,
+      "oracle": 0.6833333333333333,
+      "random": 0.002777777777777778
+    },
+    "fixed-400-300": {
+      "bm25": 0.5916666666666667,
+      "hashed": 0.5472222222222223,
+      "oracle": 0.5916666666666667,
+      "random": 0.005555555555555556
+    },
+    "fixed-400-400": {
+      "bm25": 0.475,
+      "hashed": 0.4666666666666667,
+      "oracle": 0.475,
+      "random": 0.005555555555555556
+    },
+    "fixed-800-600": {
+      "bm25": 0.7666666666666667,
+      "hashed": 0.7638888888888888,
+      "oracle": 0.7666666666666667,
+      "random": 0.0
+    },
+    "fixed-800-800": {
+      "bm25": 0.7388888888888889,
+      "hashed": 0.7388888888888889,
+      "oracle": 0.7388888888888889,
+      "random": 0.016666666666666666
+    },
+    "recursive-400-300": {
+      "bm25": 0.7444444444444445,
+      "hashed": 0.625,
+      "oracle": 0.7472222222222222,
+      "random": 0.002777777777777778
+    },
+    "recursive-800-600": {
+      "bm25": 0.8277777777777777,
+      "hashed": 0.825,
+      "oracle": 0.8277777777777777,
+      "random": 0.016666666666666666
+    },
+    "sentence-1-1": {
+      "bm25": 0.6666666666666666,
+      "hashed": 0.46944444444444444,
+      "oracle": 0.6666666666666666,
+      "random": 0.002777777777777778
+    },
+    "sentence-2-1": {
+      "bm25": 0.6666666666666666,
+      "hashed": 0.6638888888888889,
+      "oracle": 0.6666666666666666,
+      "random": 0.002777777777777778
+    },
+    "sentence-3-2": {
+      "bm25": 0.675,
+      "hashed": 0.6666666666666666,
+      "oracle": 0.6777777777777778,
+      "random": 0.011111111111111112
+    }
+  },
+  "top_k": 5,
+  "widest_chunker_range": 0.7916666666666666,
+  "widest_retriever_range": 0.1972222222222222,
+  "worst_ceiling_difference": 0.0
+}

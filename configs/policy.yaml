@@ -1,0 +1,56 @@
+# Audit policy for chunkaudit.
+#
+# The thresholds are the subject of this repository, so they live in a commented
+# file rather than in code. Each comment says who normally makes the choice and
+# what the experiments measured about it.
+
+retrieval:
+  # Chunks retrieved per question. Five is the common default in a retrieval
+  # augmented pipeline and it is the k every published figure here uses unless
+  # the figure is explicitly a sweep over k.
+  top_k: 5
+  # The k values exp01 sweeps. Included because the gap this repository is about
+  # does not close as k grows, and showing that is more convincing than saying it.
+  sweep_k: [1, 3, 5, 10, 20]
+
+audit:
+  # A chunking whose containment ceiling falls below this is destroying answers
+  # at a rate worth acting on. 0.95 is deliberately demanding: the ceiling is a
+  # hard upper bound on every retriever, so five percent of questions being
+  # unanswerable before retrieval even starts is a large amount of headroom to
+  # give away. exp04 reports what closing it costs in index size.
+  ceiling_floor: 0.95
+  # A gap this large between the standard chunk level recall and span complete
+  # recall means the standard metric is reporting something other than what a
+  # reader will assume it reports. Set at two points of recall, which is smaller
+  # than any difference a team would ship a retriever change for.
+  material_gap: 0.02
+  # When the three failure causes cannot be told apart for a question, the honest
+  # verdict is that a human should look. That happens when the answer span is
+  # empty or lies outside the document, which is a labelling error rather than a
+  # chunking one. Any question in this state above this share fails the audit
+  # with exit code 2 rather than being silently dropped.
+  unattributable_tolerance: 0.01
+  # Declared, not measured. Used to turn a measured rate over this corpus into
+  # the number a reader cares about, the same way a base rate does. See ADR-005.
+  assumed_prevalence: 0.25
+
+corpus:
+  # Documents in the generated corpus, and questions per document. Both are
+  # chosen so the whole audit runs in under a minute, because a corpus that takes
+  # ten minutes gets run once and then trusted.
+  documents: 120
+  questions_per_document: 3
+  # Target answer span lengths in characters. The realised length is at least the
+  # length of the head clause, so the bands are targets and the experiments
+  # publish the distribution that came out. The short band sits under any sensible
+  # overlap, the long band sits above it, and the middle band straddles the
+  # guarantee threshold, which is where exp03 does its work.
+  span_chars: [40, 150, 400]
+
+encoder:
+  # Hashed character n gram dimensions for the lexical vector retriever. 4096 is
+  # enough that collisions do not dominate at this corpus size, and exp05 reports
+  # the measured collision rate rather than asserting it is small.
+  dimensions: 4096
+  ngram: 4

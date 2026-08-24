@@ -1,0 +1,366 @@
+{
+  "anchors": {
+    "best_real_ceiling": [
+      "reaches {} on"
+    ],
+    "best_real_characters": [
+      "on {} characters"
+    ],
+    "ceiling_tightness": [
+      "worst absolute difference of {}"
+    ],
+    "cell_document_ceiling": [
+      "| {} |"
+    ],
+    "cell_document_chunks": [
+      "| {} |"
+    ],
+    "cell_document_gap": [
+      "| {} |"
+    ],
+    "cell_fixed_200_150_ceiling": [
+      "| {} |"
+    ],
+    "cell_fixed_200_150_chunks": [
+      "| {} |"
+    ],
+    "cell_fixed_200_150_gap": [
+      "| {} |"
+    ],
+    "cell_fixed_200_200_ceiling": [
+      "| {} |"
+    ],
+    "cell_fixed_200_200_chunks": [
+      "| {} |"
+    ],
+    "cell_fixed_200_200_gap": [
+      "| {} |"
+    ],
+    "cell_fixed_400_200_ceiling": [
+      "| {} |"
+    ],
+    "cell_fixed_400_200_chunks": [
+      "| {} |"
+    ],
+    "cell_fixed_400_200_gap": [
+      "| {} |"
+    ],
+    "cell_fixed_400_300_ceiling": [
+      "| {} |"
+    ],
+    "cell_fixed_400_300_chunks": [
+      "| {} |"
+    ],
+    "cell_fixed_400_300_gap": [
+      "| {} |"
+    ],
+    "cell_fixed_400_400_ceiling": [
+      "| {} |"
+    ],
+    "cell_fixed_400_400_chunks": [
+      "| {} |"
+    ],
+    "cell_fixed_400_400_gap": [
+      "| {} |"
+    ],
+    "cell_fixed_800_600_ceiling": [
+      "| {} |"
+    ],
+    "cell_fixed_800_600_chunks": [
+      "| {} |"
+    ],
+    "cell_fixed_800_600_gap": [
+      "| {} |"
+    ],
+    "cell_fixed_800_800_ceiling": [
+      "| {} |"
+    ],
+    "cell_fixed_800_800_chunks": [
+      "| {} |"
+    ],
+    "cell_fixed_800_800_gap": [
+      "| {} |"
+    ],
+    "cell_recursive_400_300_ceiling": [
+      "| {} |"
+    ],
+    "cell_recursive_400_300_chunks": [
+      "| {} |"
+    ],
+    "cell_recursive_400_300_gap": [
+      "| {} |"
+    ],
+    "cell_recursive_800_600_ceiling": [
+      "| {} |"
+    ],
+    "cell_recursive_800_600_chunks": [
+      "| {} |"
+    ],
+    "cell_recursive_800_600_gap": [
+      "| {} |"
+    ],
+    "cell_sentence_1_1_ceiling": [
+      "| {} |"
+    ],
+    "cell_sentence_1_1_chunks": [
+      "| {} |"
+    ],
+    "cell_sentence_1_1_gap": [
+      "| {} |"
+    ],
+    "cell_sentence_2_1_ceiling": [
+      "| {} |"
+    ],
+    "cell_sentence_2_1_chunks": [
+      "| {} |"
+    ],
+    "cell_sentence_2_1_gap": [
+      "| {} |"
+    ],
+    "cell_sentence_3_2_ceiling": [
+      "| {} |"
+    ],
+    "cell_sentence_3_2_chunks": [
+      "| {} |"
+    ],
+    "cell_sentence_3_2_gap": [
+      "| {} |"
+    ],
+    "cell_survival_400_400_10": [
+      "| {} |"
+    ],
+    "cell_survival_400_400_101": [
+      "| {} |"
+    ],
+    "cell_survival_400_400_102": [
+      "| {} |"
+    ],
+    "cell_survival_400_400_150": [
+      "| {} |"
+    ],
+    "cell_survival_400_400_201": [
+      "| {} |"
+    ],
+    "cell_survival_400_400_25": [
+      "| {} |"
+    ],
+    "cell_survival_400_400_250": [
+      "| {} |"
+    ],
+    "cell_survival_400_400_50": [
+      "| {} |"
+    ],
+    "chunker_range": [
+      "up to {}"
+    ],
+    "chunkings_audited": [
+      "{} chunkings"
+    ],
+    "chunkings_nothing_fixable": [
+      "{} of the thirteen"
+    ],
+    "combinations": [
+      "{} audited combinations"
+    ],
+    "coverage_line_pct": [
+      "{} percent line coverage",
+      "{}% line coverage"
+    ],
+    "default_200_ceiling": [
+      "chunks the ceiling is {}"
+    ],
+    "default_200_gap": [
+      "a gap of {} points",
+      "gap of {}"
+    ],
+    "default_400_ceiling": [
+      "{} at four hundred"
+    ],
+    "default_800_ceiling": [
+      "{} at eight hundred"
+    ],
+    "document_characters": [
+      "{} characters per question"
+    ],
+    "documents": [
+      "{} generated documents"
+    ],
+    "failures_destroyed": [
+      "{} were the chunker's"
+    ],
+    "failures_missed": [
+      "{} were the retriever's"
+    ],
+    "failures_total": [
+      "{} failures"
+    ],
+    "floor_gap": [
+      "reaches {}, so the retriever"
+    ],
+    "gap_at_k1": [
+      "{} at k equal to one"
+    ],
+    "gap_at_k20": [
+      "still {} at twenty"
+    ],
+    "guarantee_at_400_300": [
+      "{} characters at size four hundred"
+    ],
+    "guarantee_verified_positions": [
+      "all {} positions"
+    ],
+    "hashed_retrieval_failures": [
+      "produced {} retrieval failures"
+    ],
+    "lever_ratio": [
+      "{} times as far"
+    ],
+    "overlap_regressions": [
+      "{} case in this plan"
+    ],
+    "questions": [
+      "{} questions"
+    ],
+    "regression_ceiling_drop": [
+      "falls by {}"
+    ],
+    "regression_extra_chunks": [
+      "{} more chunks"
+    ],
+    "resolution_floor_pct": [
+      "below {} percent"
+    ],
+    "retriever_range": [
+      "at most {}"
+    ],
+    "span_recall_flat_from_k": [
+      "flat from k equal to {}"
+    ],
+    "survival_at_150_no_overlap": [
+      "{} of positions"
+    ],
+    "survival_at_400_wide": [
+      "down to {} for a four hundred"
+    ],
+    "sweep_seconds": [
+      "under {} seconds"
+    ],
+    "tests_total": [
+      "{} tests"
+    ],
+    "widest_gap": [
+      "a gap of {}"
+    ],
+    "widest_gap_chunk_recall": [
+      "reports a recall of {}"
+    ],
+    "widest_gap_chunking": [
+      "worst is {}"
+    ],
+    "widest_gap_overstated": [
+      "{} of them cannot answer"
+    ],
+    "widest_gap_span_recall": [
+      "actually answers {}"
+    ]
+  },
+  "checked_documents": [
+    "README.md",
+    "docs/defense-guide.md",
+    "docs/adr/ADR-001-the-ceiling-is-decided-before-retrieval.md",
+    "docs/adr/ADR-002-offsets-rather-than-text.md",
+    "docs/adr/ADR-003-the-encoder-this-build-could-not-reach.md",
+    "docs/adr/ADR-004-reimplement-the-splitter-rather-than-import-it.md",
+    "docs/adr/ADR-005-every-rate-carries-its-denominator.md"
+  ],
+  "metrics": {
+    "best_real_ceiling": 0.8278,
+    "best_real_characters": 3731,
+    "ceiling_tightness": 0.0,
+    "cell_document_ceiling": 1.0,
+    "cell_document_chunks": 120,
+    "cell_document_gap": 0.0,
+    "cell_fixed_200_150_ceiling": 0.2528,
+    "cell_fixed_200_150_chunks": 1321,
+    "cell_fixed_200_150_gap": 0.7472,
+    "cell_fixed_200_200_ceiling": 0.2917,
+    "cell_fixed_200_200_chunks": 1028,
+    "cell_fixed_200_200_gap": 0.7056,
+    "cell_fixed_400_200_ceiling": 0.6833,
+    "cell_fixed_400_200_chunks": 908,
+    "cell_fixed_400_200_gap": 0.3167,
+    "cell_fixed_400_300_ceiling": 0.5917,
+    "cell_fixed_400_300_chunks": 667,
+    "cell_fixed_400_300_gap": 0.4083,
+    "cell_fixed_400_400_ceiling": 0.475,
+    "cell_fixed_400_400_chunks": 547,
+    "cell_fixed_400_400_gap": 0.525,
+    "cell_fixed_800_600_ceiling": 0.7667,
+    "cell_fixed_800_600_chunks": 358,
+    "cell_fixed_800_600_gap": 0.2333,
+    "cell_fixed_800_800_ceiling": 0.7389,
+    "cell_fixed_800_800_chunks": 307,
+    "cell_fixed_800_800_gap": 0.2611,
+    "cell_recursive_400_300_ceiling": 0.7472,
+    "cell_recursive_400_300_chunks": 610,
+    "cell_recursive_400_300_gap": 0.2528,
+    "cell_recursive_800_600_ceiling": 0.8278,
+    "cell_recursive_800_600_chunks": 336,
+    "cell_recursive_800_600_gap": 0.1722,
+    "cell_sentence_1_1_ceiling": 0.6667,
+    "cell_sentence_1_1_chunks": 2359,
+    "cell_sentence_1_1_gap": 0.225,
+    "cell_sentence_2_1_ceiling": 0.6667,
+    "cell_sentence_2_1_chunks": 2239,
+    "cell_sentence_2_1_gap": 0.3333,
+    "cell_sentence_3_2_ceiling": 0.6778,
+    "cell_sentence_3_2_chunks": 1148,
+    "cell_sentence_3_2_gap": 0.325,
+    "cell_survival_400_400_10": 0.98,
+    "cell_survival_400_400_101": 0.769,
+    "cell_survival_400_400_102": 0.767,
+    "cell_survival_400_400_150": 0.652,
+    "cell_survival_400_400_201": 0.526,
+    "cell_survival_400_400_25": 0.946,
+    "cell_survival_400_400_250": 0.402,
+    "cell_survival_400_400_50": 0.888,
+    "chunker_range": 0.7917,
+    "chunkings_audited": 13,
+    "chunkings_nothing_fixable": 10,
+    "combinations": 260,
+    "coverage_line_pct": 99.2,
+    "default_200_ceiling": 0.2917,
+    "default_200_gap": 0.7056,
+    "default_400_ceiling": 0.475,
+    "default_800_ceiling": 0.7389,
+    "document_characters": 7662,
+    "documents": 120,
+    "failures_destroyed": 1661,
+    "failures_missed": 2,
+    "failures_total": 1663,
+    "floor_gap": 0.9722,
+    "gap_at_k1": 0.85,
+    "gap_at_k20": 0.7472,
+    "guarantee_at_400_300": 101,
+    "guarantee_verified_positions": 3899,
+    "hashed_retrieval_failures": 177,
+    "lever_ratio": 4.0,
+    "overlap_regressions": 1,
+    "questions": 360,
+    "regression_ceiling_drop": 0.0389,
+    "regression_extra_chunks": 293,
+    "resolution_floor_pct": 0.28,
+    "retriever_range": 0.1972,
+    "span_recall_flat_from_k": 3,
+    "survival_at_150_no_overlap": 0.652,
+    "survival_at_400_wide": 0.557,
+    "sweep_seconds": 10,
+    "tests_total": 232,
+    "widest_gap": 0.7472,
+    "widest_gap_chunk_recall": 1.0,
+    "widest_gap_chunking": "fixed-200-150",
+    "widest_gap_overstated": 269,
+    "widest_gap_span_recall": 0.2528
+  },
+  "note": "every value here is produced by running the suite and the five experiments"
+}

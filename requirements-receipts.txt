@@ -1,0 +1,7 @@
+# Pinned for the job that publishes figures. The test suite asserts properties
+# and inequalities, so it runs on three Python versions against whatever
+# resolves. The published rates are re-measured only in the receipts job, with
+# these exact versions. sentence-transformers is deliberately absent: it is a
+# supported retriever, not part of the corpus, and ADR-003 says why.
+numpy==2.4.4
+PyYAML==6.0.3

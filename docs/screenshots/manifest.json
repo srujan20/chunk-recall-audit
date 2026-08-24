@@ -1,0 +1,80 @@
+{
+  "shots": [
+    {
+      "image": "docs/screenshots/audit-small-chunks.png",
+      "report": ".cache/reports/audit.html",
+      "framed_by": [
+        "Decided before any retrieval ran",
+        "The standard metric against the one a reader assumes"
+      ],
+      "caption": "A 200 character chunking, and what it destroyed before retrieval began",
+      "device_scale_factor": 2,
+      "badge": {
+        "colour": "rgb(109, 23, 23)",
+        "background": "rgb(250, 227, 227)",
+        "border": "rgb(224, 167, 167)",
+        "visible": true,
+        "text": "This chunker destroys material answers",
+        "contrast_ratio": 9.61
+      },
+      "bytes": 115626
+    },
+    {
+      "image": "docs/screenshots/audit-bars.png",
+      "report": ".cache/reports/audit.html",
+      "framed_by": [
+        "The standard metric against the one a reader assumes",
+        "Why each failure happened"
+      ],
+      "caption": "The ceiling marked on every bar, so the unreachable part is visible",
+      "device_scale_factor": 2,
+      "badge": {
+        "colour": "rgb(109, 23, 23)",
+        "background": "rgb(250, 227, 227)",
+        "border": "rgb(224, 167, 167)",
+        "visible": true,
+        "text": "This chunker destroys material answers",
+        "contrast_ratio": 9.61
+      },
+      "bytes": 92141
+    },
+    {
+      "image": "docs/screenshots/audit-causes.png",
+      "report": ".cache/reports/audit.html",
+      "framed_by": [
+        "Why each failure happened",
+        null
+      ],
+      "caption": "Every failure attributed to exactly one cause, only one of them fixable",
+      "device_scale_factor": 2,
+      "badge": {
+        "colour": "rgb(109, 23, 23)",
+        "background": "rgb(250, 227, 227)",
+        "border": "rgb(224, 167, 167)",
+        "visible": true,
+        "text": "This chunker destroys material answers",
+        "contrast_ratio": 9.61
+      },
+      "bytes": 84504
+    },
+    {
+      "image": "docs/screenshots/sweep-worst-first.png",
+      "report": ".cache/reports/sweep.html",
+      "framed_by": [
+        "The ceiling is a property of the chunker",
+        null
+      ],
+      "caption": "Every chunking in the plan, sorted worst ceiling first",
+      "device_scale_factor": 2,
+      "badge": {
+        "colour": "rgb(109, 23, 23)",
+        "background": "rgb(250, 227, 227)",
+        "border": "rgb(224, 167, 167)",
+        "visible": true,
+        "text": "The gap column is the point",
+        "contrast_ratio": 9.61
+      },
+      "bytes": 268025
+    }
+  ]
+}

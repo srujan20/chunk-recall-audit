@@ -1,6 +1,6 @@
 {
   "boundary": "this is arithmetic on a synthetic document and involves no retrieval and no corpus. It transfers exactly to any uniform character windowing, and not at all to a splitter whose windows are not uniform, which is why guaranteed_length returns None for those",
-  "closed_form": "an answer of length L survives at every position if and only if L <= size - stride + 1",
+  "closed_form": "an answer of length L survives at every position if and only if L is at most size minus stride plus one",
   "document_length": 4000,
   "experiment": "exp03-the-guarantee-threshold",
   "lengths": [

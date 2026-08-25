@@ -236,7 +236,7 @@ If your labels are answer *text* rather than offsets, find the offsets first and
 In another repository, as a step:
 
 ```yaml
-- uses: srujan20/chunk-recall-audit@main
+- uses: srujan20/chunk-recall-audit@v1.0.0
   with:
     policy: configs/policy.yaml
     ambiguous-fails: "false"    # exit 2 warns rather than blocks, until you trust it

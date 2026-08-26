@@ -352,13 +352,16 @@ def main(argv: list[str] | None = None) -> int:
         "anchors": {name: ANCHORS[name] for name in metrics},
         "checked_documents": [
             "README.md",
-            "docs/defense-guide.md",
             "docs/adr/ADR-001-the-ceiling-is-decided-before-retrieval.md",
             "docs/adr/ADR-002-offsets-rather-than-text.md",
             "docs/adr/ADR-003-the-encoder-this-build-could-not-reach.md",
             "docs/adr/ADR-004-reimplement-the-splitter-rather-than-import-it.md",
             "docs/adr/ADR-005-every-rate-carries-its-denominator.md",
         ],
+        # Checked when present, skipped when not. The defense guide is an
+        # interview document rather than a deliverable, so a public checkout
+        # may reasonably not carry it, and CI should not fail for that.
+        "optional_documents": ["docs/defense-guide.md"],
         "note": "every value here is produced by running the suite and the five experiments",
     }
     destination = DOCS / "metrics.json"

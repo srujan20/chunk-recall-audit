@@ -392,7 +392,6 @@
   },
   "checked_documents": [
     "README.md",
-    "docs/defense-guide.md",
     "docs/adr/ADR-001-the-ceiling-is-decided-before-retrieval.md",
     "docs/adr/ADR-002-offsets-rather-than-text.md",
     "docs/adr/ADR-003-the-encoder-this-build-could-not-reach.md",
@@ -530,5 +529,8 @@
     "widest_gap_overstated": 269,
     "widest_gap_span_recall": 0.2528
   },
-  "note": "every value here is produced by running the suite and the five experiments"
+  "note": "every value here is produced by running the suite and the five experiments",
+  "optional_documents": [
+    "docs/defense-guide.md"
+  ]
 }

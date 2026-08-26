@@ -65,6 +65,50 @@ jobs:
           name: test-reports-${{ matrix.python-version }}
           path: reports/
 
+  # The tool run the way a consumer would run it, through its own composite action.
+  # This is the only job that would notice `action.yml` drifting from the CLI it
+  # wraps, and a step that has only ever seen exit 0 is not testing an exit code, so
+  # every verdict the action's inputs can reach is asserted here.
+  #
+  # `warn-only` appears on exactly one step per verdict set, and only on the exit 1
+  # one. Exit 1 is the finding this repository exists to report, so the action is
+  # meant to fail a step on it, and a job that quietly turned that off everywhere
+  # would be testing a tool nobody runs. The verdict and the exit code are still
+  # asserted from the step's outputs.
+  #
+  # One verdict is deliberately absent. `causes-cannot-be-told-apart` fires when a
+  # containing chunk exists in the corpus and appears nowhere in the ranking, which
+  # is a bug in a retriever rather than a property of a chunking, so no combination
+  # of this action's inputs reaches it. Adding an input that could would mean
+  # shipping a way to break the tool for the sake of a symmetrical CI log. It is
+  # covered directly instead, by
+  # tests/test_audit_pipeline_report.py::test_unattributable_questions_are_checked_first.
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        id: destroying
+        with:
+          strategy: fixed
+          size: "400"
+          stride: "400"
+          warn-only: "true"
+      - name: A fixed four hundred character chunking destroys material answers
+        run: |
+          echo "verdict ${{ steps.destroying.outputs.verdict }}, exit ${{ steps.destroying.outputs.exit-code }}"
+          test "${{ steps.destroying.outputs.verdict }}" = "chunker-destroys-material-answers"
+          test "${{ steps.destroying.outputs.exit-code }}" = "1"
+      - uses: ./
+        id: survives
+        with:
+          strategy: document
+      - name: Chunking on document boundaries leaves the answers reachable
+        run: |
+          echo "verdict ${{ steps.survives.outputs.verdict }}"
+          test "${{ steps.survives.outputs.verdict }}" = "answers-survive-the-chunker"
+          test "${{ steps.survives.outputs.exit-code }}" = "0"
+
   # The only job that re-measures a published rate, with pinned dependency
   # versions. The tests run on three Pythons against whatever resolves, because
   # they assert properties rather than values.
